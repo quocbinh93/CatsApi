@@ -58,4 +58,12 @@ class CatFavProvider {
 
     print(resp.body);
   }
+
+  void removeFavorites(Cat cat) async {
+    final addFavUrl = Uri.https(_url, '/v1/favourites/${cat.id}');
+    final resp = await http.delete(addFavUrl, headers: {'x-api-key': _api_key});
+
+    print(resp.body);
+  }
+  
 }

@@ -9,7 +9,6 @@ import 'package:Gatitos/pages/register_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:Gatitos/pages/change_password.dart';
 
-
 void main() async {
   // Khởi tạo Firebase App
   try {
@@ -49,9 +48,9 @@ class MyApp extends StatelessWidget {
         'fav': (context) => FavPage(),
         'detail': (context) => CatDetail(),
         'breed': (context) => BreedInfo(),
-        'login':(context) => LoginPage(),
-        'register':(context) => RegisterPage(),
-        'change':(context) => ChangePasswordPage(),
+        'login': (context) => LoginPage(),
+        'register': (context) => RegisterPage(),
+        'change': (context) => ChangePasswordPage(),
       },
     );
   }

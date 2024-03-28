@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:Gatitos/pages/home_page.dart';
+import 'package:Gatitos/pages/register_page.dart';
+import 'package:Gatitos/pages/change_password.dart';
+import 'dart:async';
+import 'package:firebase_core/firebase_core.dart';
 
 class ChangePasswordPage extends StatefulWidget {
   @override

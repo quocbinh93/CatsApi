@@ -49,4 +49,9 @@ class FavPage extends StatelessWidget {
       },
     );
   }
+
+  // RemovetoFavorite
+  void _removeFavorite(Cat cat) {
+    catFavProvider.removeFavorites(cat);
+  }
 }
