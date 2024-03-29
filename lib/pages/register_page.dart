@@ -123,7 +123,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Dog API',
+                    'CAT API',
                     style: TextStyle(fontSize: 32.0),
                   ),
                 ],
