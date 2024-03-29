@@ -16,6 +16,7 @@ class CardFavCat extends StatefulWidget {
 class _CardFavCatState extends State<CardFavCat> {
   final _catFavProvider = CatFavProvider();
   final _scrollController = ScrollController();
+  final _removeToFavorite = CatFavProvider();
   int _globalIndex = 0;
 
   @override
@@ -57,12 +58,19 @@ class _CardFavCatState extends State<CardFavCat> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(
-                  onPressed: (() {
-                    Navigator.pushNamed(context, 'detail', arguments: cat);
-                  }),
-                  child: Text('Information'))
+                onPressed: () {
+                  Navigator.pushNamed(context, 'detail', arguments: cat);
+                },
+                child: Text('Information'),
+              ),
+              IconButton(
+                icon: Icon(Icons.favorite),
+                onPressed: () {
+                  // _removeFavorite(cat);
+                },
+              ),
             ],
-          )
+          ),
         ],
       ),
     );

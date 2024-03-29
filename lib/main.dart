@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Cat Details',
-      initialRoute: 'home',
+      initialRoute: 'login',
       routes: {
         'home': (context) => HomePage(),
         'fav': (context) => FavPage(),
@@ -50,7 +50,8 @@ class MyApp extends StatelessWidget {
         'breed': (context) => BreedInfo(),
         'login': (context) => LoginPage(),
         'register': (context) => RegisterPage(),
-        'change': (context) => ChangePasswordPage(),
+        'changePassword': (context) => ChangePasswordPage(),
+        'logout': (context) => LoginPage(),
       },
     );
   }

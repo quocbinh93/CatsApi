@@ -11,37 +11,33 @@ class CardCat extends StatefulWidget {
 
   @override
   State<CardCat> createState() => _CardCatState();
-
 }
 
 class _CardCatState extends State<CardCat> {
-
   final _catFavProvider = CatFavProvider();
   final _scrollController = ScrollController();
-  bool _isLoading = false; 
-  
+  bool _isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     final _screenSize = MediaQuery.of(context).size;
 
-    
     _scrollController.addListener(() {
-      if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent - 400 && !_isLoading) {
+      if (_scrollController.position.pixels >=
+              _scrollController.position.maxScrollExtent - 400 &&
+          !_isLoading) {
         getMoreCats();
       }
     });
-    
 
     return ListView(
-      controller: _scrollController,
-      children: _crearLista(_screenSize)
-    );
+        controller: _scrollController, children: _crearLista(_screenSize));
   }
 
   List<Widget> _crearLista(Size screenSize) {
-    List<Widget> lista = []; 
+    List<Widget> lista = [];
 
-    widget.cats.forEach((cat) { 
+    widget.cats.forEach((cat) {
       lista.add(_crearCardGato(cat, screenSize));
     });
 
@@ -53,7 +49,10 @@ class _CardCatState extends State<CardCat> {
       padding: EdgeInsets.all(20.0),
       child: Column(
         children: [
-          Text(cat.breedName!),
+          Text(
+            cat.breedName!,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+          ),
           ClipRRect(
             borderRadius: BorderRadius.circular(5.0),
             child: Container(
@@ -69,17 +68,16 @@ class _CardCatState extends State<CardCat> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(
-                onPressed: (() {
-                  Navigator.pushNamed(context, 'detail', arguments: cat);
-                }), 
-                child: Text('Information')
-              ),
+                  onPressed: (() {
+                    Navigator.pushNamed(context, 'detail', arguments: cat);
+                  }),
+                  child: Text('Information')),
               IconButton(
-                onPressed: () {
-                  /* Añadir a favoritos */
-                  _catFavProvider.addToFavorites(cat);
-                }, 
-                icon: Icon(Icons.favorite))
+                  onPressed: () {
+                    /* Añadir a favoritos */
+                    _catFavProvider.addToFavorites(cat);
+                  },
+                  icon: Icon(Icons.favorite))
             ],
           )
         ],
@@ -93,7 +91,6 @@ class _CardCatState extends State<CardCat> {
     });
 
     final List<Cat> newCatList = await CatProvider().getCats();
-
 
     setState(() {
       newCatList.forEach((cat) {

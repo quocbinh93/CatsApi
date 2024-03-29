@@ -3,10 +3,11 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:Gatitos/models/cat_model.dart';
 
+
 class CatProvider {
   String _url = 'api.thecatapi.com';
   String _api_key =
-      'live_mcwGebtrOoyL9hbpWE8Iin8EC0QpbzCjg3clI1Dj0pSUShpELIdmu6DhubWHH6Jt';
+      'live_zgo9DGLDog9TiXkY4yyrGPUvOnbTna0ehs8um61BZlDsiXYU6NzVLP4wCb6Zobd0';
   int _limit = 10;
 
   List<Cat> _cats = [];
@@ -36,12 +37,29 @@ class CatProvider {
     return catAllInfo;
   }
 
-  //   Future<List<Cat>> getRandomCats() async {
-  //   final url = Uri.https(_url, '/v1/images/search',
-  //       {'limit': _limit.toString(), 'order': 'RANDOM'});
-  //   final resp = await http.get(url, headers: {'x-api-key': _api_key});
-  //   final decodedData = json.decode(resp.body);
-  //   final cats = Cats.fromJsonList(decodedData);
-  //   return cats;
-  // }
+  Future<List<Cat>> getRandomCats() async {
+    final url = Uri.https(_url, '/v1/images/search',
+        {'api_key': _api_key, 'limit': _limit.toString(), 'order': 'RANDOM'});
+
+    final resp = await http.get(url);
+    final decodedData = json.decode(resp.body);
+    final cats = Cats.fromJsonList(decodedData);
+
+    final allCatsFutures = cats.items.map((cat) => getCatInfo(cat)).toList();
+    final allCatsLists = await Future.wait(allCatsFutures);
+    return allCatsLists;
+  }
+
+  Future<List<Cat>> searchCatsByName(String name) async {
+    final url =
+        Uri.https(_url, '/v1/breeds/search', {'api_key': _api_key, 'q': name});
+
+    final resp = await http.get(url);
+    final decodedData = json.decode(resp.body);
+    final cats = Cats.fromJsonList(decodedData);
+
+    final allCatsFutures = cats.items.map((cat) => getCatInfo(cat)).toList();
+    final allCatsLists = await Future.wait(allCatsFutures);
+    return allCatsLists;
+  }
 }

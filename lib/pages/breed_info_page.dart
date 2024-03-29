@@ -3,7 +3,6 @@ import 'package:Gatitos/widgets/card_breed_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:Gatitos/models/cat_model.dart';
 import 'package:Gatitos/widgets/card_cat_widget.dart';
-import 'package:Gatitos/widgets/movie_horizontal.dart';
 
 import '../models/breed_model.dart';
 import '../providers/cat_fav_provider.dart';
