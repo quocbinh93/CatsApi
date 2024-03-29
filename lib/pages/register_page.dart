@@ -113,7 +113,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   // Thêm hình logo
                   SizedBox(
                     height: 50.0,
-                    child: Image.asset('assets/logo.png'),
+                    child: Image.asset('./assets/images/logo.png'),
                   ),
                 ],
               ),
